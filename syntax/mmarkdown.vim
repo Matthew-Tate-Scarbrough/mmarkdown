@@ -2,11 +2,10 @@
 " Language:	M-Markdown
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
-" Last Change:	2020 Mar 13
-" Version:	0.03d
+" Last Change:	2020 Mar 15
+" Version:	0.04
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
-" TODO:		Add FOOTNOTES, etc.
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 "                 _    _        _    _    ___    ____    _   _   ____    _____   _    _   _   _                 "
@@ -65,7 +64,7 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 	syn cluster mmdBlocks     contains=@mmdHeaders,@mmdHeadersNouline,mmdBlockCode,mmdBlockQuote,mmdBlockList,mmdBlockListNumbered,mmdFormatRules
 	syn cluster mmdInline     contains=mmdInlineCode,mmdInlineItalics,mmdInlineBold,mmdInlineUnderline,mmdInlineStrikethrough
-	syn cluster mmdFormatting contains=@mmdFormatColours,mmdFormatCode,mmdFormatItalics,mmdFormatBold,mmdFormatUnderline,mmdFormatStrikethrough
+	syn cluster mmdFormatting contains=@mmdFormatColours,mmdFormatCode,mmdFormatItalics,mmdFormatBold,mmdFormatUnderline,mmdFormatStrikethrough,mmdFormatItalicsBold,mmdFormatItalicsUnderline,mmdFormatItalicsStrike,mmdFormatBoldUnderline,mmdFormatBoldStrike,mmdFormatUnderlineStrike,mmdFormatAll,mmdFormatItalicsUnderlineStrike,mmdFormatBoldUnderlineStrike,mmdFormatAllPlus,mmdFormatEscape
 
 	syn cluster mmdHeaders        contains=mmdFormatH1,mmdFormatH2,mmdFormatH3,mmdFormatH4,mmdFormatH5,mmdFormatH6
 	syn cluster mmdHeadersNouline contains=mmdFormatH1Nouline,mmdFormatH2Nouline,mmdFormatH3Nouline,mmdFormatH4Nouline,mmdFormatH5Nouline,mmdFormatH6Nouline
@@ -101,37 +100,41 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 " ===FORMATTING===
 
+	" Escape Sequences
+	syn match mmdFormatEscape "\\[][\\`*_{}()<>#+.!-~%]"
+	syn match mmdFormatEscape "\\r\|\\n\|\\t"
+
 	" Colours
 	" TODO: add a customisable colouring system & more streamlined
 	
 		" Foreground
-		syn region mmdFormatColourBlack     matchgroup=mmdColoursDelimiter start=+\\black"\|\\black{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourBlue      matchgroup=mmdColoursDelimiter start=+\\blue"\|\\blue{+                   matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourBrown     matchgroup=mmdColoursDelimiter start=+\\brown"\|\\brown{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourGreen     matchgroup=mmdColoursDelimiter start=+\\green"\|\\green{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourCyan      matchgroup=mmdColoursDelimiter start=+\\cyan"\|\\cyan{+                   matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourRed       matchgroup=mmdColoursDelimiter start=+\\red"\|\\red{+                     matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourMagenta   matchgroup=mmdColoursDelimiter start=+\\magenta"\|\\magenta{+             matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourYellow    matchgroup=mmdColoursDelimiter start=+\\yellow"\|\\yellow{+               matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourWhite     matchgroup=mmdColoursDelimiter start=+\\white"\|\\white{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourLightGrey matchgroup=mmdColoursDelimiter start=+\\grey"\|\\grey{\|\\gray"\|\\gray{+ matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
+		syn region mmdFormatColourBlack     matchgroup=mmdColoursDelimiter start=+\\black"\|\\black{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourBlue      matchgroup=mmdColoursDelimiter start=+\\blue"\|\\blue{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourBrown     matchgroup=mmdColoursDelimiter start=+\\brown"\|\\brown{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourGreen     matchgroup=mmdColoursDelimiter start=+\\green"\|\\green{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourCyan      matchgroup=mmdColoursDelimiter start=+\\cyan"\|\\cyan{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourRed       matchgroup=mmdColoursDelimiter start=+\\red"\|\\red{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourMagenta   matchgroup=mmdColoursDelimiter start=+\\magenta"\|\\magenta{+             matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourYellow    matchgroup=mmdColoursDelimiter start=+\\yellow"\|\\yellow{+               matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourWhite     matchgroup=mmdColoursDelimiter start=+\\white"\|\\white{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourLightGrey matchgroup=mmdColoursDelimiter start=+\\grey"\|\\grey{\|\\gray"\|\\gray{+ matchgroup=mmdColoursDelimiter end=+"\|}+
 
 		" Background (highlighting)
-		syn region mmdFormatColourHiBlack     matchgroup=mmdColoursDelimiter start=+\\hiblack"\|\\hiblack{+                     matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiBlue      matchgroup=mmdColoursDelimiter start=+\\hibl[ue]"\|\\hibl[ue]{+                   matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiBrown     matchgroup=mmdColoursDelimiter start=+\\hibr[own]"\|\\hibr[own]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiGreen     matchgroup=mmdColoursDelimiter start=+\\higr[een]"\|\\higr[een]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiCyan      matchgroup=mmdColoursDelimiter start=+\\hicy[an]"\|\\hicy[an]{+                   matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiRed       matchgroup=mmdColoursDelimiter start=+\\hir[ed]"\|\\hir[ed]{+                     matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiMagenta   matchgroup=mmdColoursDelimiter start=+\\him[agenta]"\|\\him[agenta]{+             matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiYellow    matchgroup=mmdColoursDelimiter start=+\\hiy[ellow]"\|\\hiy[ellow]{+               matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiWhite     matchgroup=mmdColoursDelimiter start=+\\hiwh[ite]"\|\\hiwh[ite]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
-		syn region mmdFormatColourHiLightGrey matchgroup=mmdColoursDelimiter start=+\\higrey"\|\\higrey{\|\\higray"\|\\higray{+ matchgroup=mmdColoursDelimiter end=+"\|}+ keepend
+		syn region mmdFormatColourHiBlack     matchgroup=mmdColoursDelimiter start=+\\hiblack"\|\\hiblack{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiBlue      matchgroup=mmdColoursDelimiter start=+\\hibl[ue]"\|\\hibl[ue]{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiBrown     matchgroup=mmdColoursDelimiter start=+\\hibr[own]"\|\\hibr[own]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiGreen     matchgroup=mmdColoursDelimiter start=+\\higr[een]"\|\\higr[een]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiCyan      matchgroup=mmdColoursDelimiter start=+\\hicy[an]"\|\\hicy[an]{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiRed       matchgroup=mmdColoursDelimiter start=+\\hir[ed]"\|\\hir[ed]{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiMagenta   matchgroup=mmdColoursDelimiter start=+\\him[agenta]"\|\\him[agenta]{+             matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiYellow    matchgroup=mmdColoursDelimiter start=+\\hiy[ellow]"\|\\hiy[ellow]{+               matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiWhite     matchgroup=mmdColoursDelimiter start=+\\hiwh[ite]"\|\\hiwh[ite]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiLightGrey matchgroup=mmdColoursDelimiter start=+\\higrey"\|\\higrey{\|\\higray"\|\\higray{+ matchgroup=mmdColoursDelimiter end=+"\|}+
 
 	" Comments
-	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="/\*"           matchgroup=mmdCommentDelimiter   end="\*/"      keepend
-	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="//"            matchgroup=mmdCommentDelimiter   end="#*\s*$"   keepend
-	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="%"             matchgroup=mmdCommentDelimiter   end="#*\s*$"   keepend
+	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="/\*"           matchgroup=mmdCommentDelimiter   end="\*/"  keepend
+	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="//"            matchgroup=mmdCommentDelimiter   end="\s*$" keepend
+	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="%"             matchgroup=mmdCommentDelimiter   end="\s*$" keepend
 
 	" Meta Data Pre Proc
 	syn match mmdFormatMetaProc "^//"  nextgroup=@mmdMetaDataParams
@@ -140,25 +143,19 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	syn match mmdFormatMetaData ".\+$" contained contains=mmdFormatComment
 
 	" Code
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"     matchgroup=mmdFaceDelimiter    end="#*\s*$"   keepend   contains=@mmdInline
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                matchgroup=mmdFaceDelimiter      end="`"        keepend   contains=@mmdInline
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"     matchgroup=mmdFaceDelimiter    end="\s*$" keepend   contains=@mmdInline
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                matchgroup=mmdFaceDelimiter      end="`"    keepend   contains=@mmdInline
 
 	" Font Faces
 
 		" Italics
 		syn region mmdFormatItalics       matchgroup=mmdFaceDelimiter start="\S\@<=\*\|\*\S\@="     matchgroup=mmdFaceDelimiter end="\S\@<=\*\|\*\S\@="     keepend contains=@mmdInline
-			"syn region mmdFormatItalicsBold      matchgroup=mmdFaceDelimiter start="\*\*\*"         matchgroup=mmdFaceDelimiter end="\*\*\*"         keepend contains=@mmdInline
-			"syn region mmdFormatItalicsUnderline matchgroup=mmdFaceDelimiter start="_\*"            matchgroup=mmdFaceDelimiter end="\*_"            keepend contains=@mmdInline
-			"syn region mmdFormatItalicsStrike    matchgroup=mmdFaceDelimiter start="\~\*"           matchgroup=mmdFaceDelimiter end="\*\~"           keepend contains=@mmdInline
 
 		" Bold
 		syn region mmdFormatBold          matchgroup=mmdFaceDelimiter start="\S\@<=\*\*\|\*\*\S\@=" matchgroup=mmdFaceDelimiter end="\S\@<=\*\*\|\*\*\S\@=" keepend contains=@mmdInline
-			"syn region mmdFormatBoldUnderline    matchgroup=mmdFaceDelimiter start="_\*\*"          matchgroup=mmdFaceDelimiter end="\*\*_"          keepend contains=@mmdInline
-			"syn region mmdFormatBoldStrike       matchgroup=mmdFaceDelimiter start="\~\*\*"         matchgroup=mmdFaceDelimiter end="\*\*\~"         keepend contains=@mmdInline
 
 		" Underline
 		syn region mmdFormatUnderline     matchgroup=mmdFaceDelimiter start="\S\@<=_\|_\S\@="       matchgroup=mmdFaceDelimiter end="\S\@<=_\|_\S\@="       keepend contains=@mmdInline
-			"syn region mmdFormatUnderlineStrike  matchgroup=mmdFaceDelimiter start="_\~"            matchgroup=mmdFaceDelimiter end="\~_"            keepend contains=@mmdInline
 
 		" Strikethrough
 		syn region mmdFormatStrikethrough matchgroup=mmdFaceDelimiter start="\S\@<=\~\|\~\S\@="     matchgroup=mmdFaceDelimiter end="\S\@<=\~\|\~\S\@="     keepend contains=@mmdInline
@@ -166,6 +163,7 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 		" Permutations
 		"""" Due to how Vim works, this is the only Order they will
 		"""" work in, that I care to test, after the previous and these
+		
 		syn region mmdFormatItalicsBold            matchgroup=mmdFaceDelimiter start="\S\@<=\*\*\*\|\*\*\*\S\@="       matchgroup=mmdFaceDelimiter end="\S\@<=\*\*\*\|\*\*\*\S\@="       keepend
 		syn region mmdFormatItalicsUnderline       matchgroup=mmdFaceDelimiter start="\S\@<=_\*\|_\*\S\@="             matchgroup=mmdFaceDelimiter end="\S\@<=\*_\|\*_\S\@="             keepend
 		syn region mmdFormatItalicsStrike          matchgroup=mmdFaceDelimiter start="\S\@<=\~\*\|\~\*\S\@="           matchgroup=mmdFaceDelimiter end="\S\@<=\*\~\|\*\~\S\@="           keepend
@@ -188,36 +186,45 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 
 	" Block Quote
-	syn region mmdFormatBlockQuote    matchgroup=mmdCommentDelimiter start="^>\|^\s\s\s\s>\|^\t>"                matchgroup=mmdCommentDelimiter   end="#*\s*$"   keepend contains=@mmdInline
-	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>>\|^\s\s\s\s>>\|^\t>>"             matchgroup=mmdCommentDelimiter   end="#*\s*$"   keepend contains=@mmdInline
-	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>\s>\|^\s\s\s\s>\s\|^\t>\s"         matchgroup=mmdCommentDelimiter   end="#*\s*$"   keepend contains=@mmdInline
-	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>\s>\s\|^\s\s\s\s>\s>\s\|^\t>\s>\s" matchgroup=mmdCommentDelimiter   end="#*\s*$"   keepend contains=@mmdInline
+	syn region mmdFormatBlockQuote    matchgroup=mmdCommentDelimiter start="^>\|^\s\s\s\s>\|^\t>"                matchgroup=mmdCommentDelimiter   end="\s*$"   keepend contains=@mmdInline
+	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>>\|^\s\s\s\s>>\|^\t>>"             matchgroup=mmdCommentDelimiter   end="\s*$"   keepend contains=@mmdInline
+	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>\s>\|^\s\s\s\s>\s\|^\t>\s"         matchgroup=mmdCommentDelimiter   end="\s*$"   keepend contains=@mmdInline
+	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>\s>\s\|^\s\s\s\s>\s>\s\|^\t>\s>\s" matchgroup=mmdCommentDelimiter   end="\s*$"   keepend contains=@mmdInline
 
 	" Lists
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[-*+~]\s"                      matchgroup=mmdFaceDelimiter end="#*\s*$" keepend contains=@mmdInline
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[-*+~]\s"                   matchgroup=mmdFaceDelimiter end="#*\s*$" keepend contains=@mmdInline
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\t*[-*+~]\s"                   matchgroup=mmdFaceDelimiter end="#*\s*$" keepend contains=@mmdInline
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="#*\s*$" keepend contains=@mmdInline
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.\s" matchgroup=mmdFaceDelimiter end="#*\s*$" keepend contains=@mmdInline
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\t*[[0-9A-Za-z[:alnum:]]*\.\s" matchgroup=mmdFaceDelimiter end="#*\s*$" keepend contains=@mmdInline
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[-*+~]\s"                      matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[-*+~]\s"                   matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.\s" matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
+	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend contains=@mmdFormatting
 
 	" Links
-	syn region mmdFormatLink          matchgroup=mmdFaceDelimiter start="<"                matchgroup=mmdFaceDelimiter end=">"  keepend
-	syn region mmdFormatLink          matchgroup=mmdLinkDelimiter start=+(+                matchgroup=mmdLinkDelimiter end=+)+  keepend contained
-	syn region mmdFormatHyperLink     matchgroup=mmdLinkDelimiter start="\[\|\!\[\|\[\!\[" matchgroup=mmdLinkDelimiter end="\]" keepend nextgroup=mmdFormatLink contains=@mmdInline,@mmdFormatting,mmdFormatPseudonym
-	syn region mmdFormatPseudonym     matchgroup=mmdLinkDelimiter start=+"+                matchgroup=mmdLinkDelimiter end=+"+  keepend contained
+	syn region mmdFormatLink          matchgroup=mmdFaceDelimiter start="<"                matchgroup=mmdFaceDelimiter end=">"      keepend
+	syn region mmdFormatLink          matchgroup=mmdLinkDelimiter start=+(+                matchgroup=mmdLinkDelimiter end=+)\|)\]+ keepend contained
+	syn region mmdFormatHyperLink     matchgroup=mmdLinkDelimiter start="\["               matchgroup=mmdLinkDelimiter end="\]"     nextgroup=mmdFormatLink,mmdFormatHyperLink contains=@mmdInline,mmdFormatHyperLink,mmdFormatPseudonym
+	syn region mmdFormatHyperLink     matchgroup=mmdLinkDelimiter start="\!\["             matchgroup=mmdLinkDelimiter end="\]"     keepend nextgroup=mmdFormatLink,mmdFormatHyperLink contains=@mmdInline,mmdFormatHyperLink,mmdFormatPseudonym
+	syn region mmdFormatPseudonym     matchgroup=mmdLinkDelimiter start=+"+                matchgroup=mmdLinkDelimiter end=+"+      keepend contained
 
-	" Escape Sequences
-	syn match mmdFormatEscape "\\[][\\`*_{}()<>#+.!-~%]"
-	syn match mmdFormatEscape "\\r\|\\n\|\\t"
+	" Footnotes/References
+	syn match mmdFormatReferenceMark "\[[0-9A-Za-z[:alnum:]]*\]\|\[[0-9A-Za-z[:alnum:]]*\]"
+	syn match mmdFormatReferenceMark "\[^[0-9A-Za-z[:alnum:]]*\]\|\[^[0-9A-Za-z[:alnum:]]*\]"
+	syn match mmdFormatReferenceMark "\[[0-9A-Za-z[:alnum:]]*\]:\s\|\[[0-9A-Za-z[:alnum:]]*\]:\s"
+	syn match mmdFormatReferenceMark "\[^[0-9A-Za-z[:alnum:]]*\]:\s\|\[^[0-9A-Za-z[:alnum:]]*\]:\s"
 
 	" Rules
-	syn match mmdFormatRules "^-\s-\s-"
-	syn match mmdFormatRules "^=\s=\s="
-	syn match mmdFormatRules "^\~\s\~\s\~"
-	syn match mmdFormatRules "^-\s-\s-\s-"
-	syn match mmdFormatRules "^=\s=\s=\s="
-	syn match mmdFormatRules "^\~\s\~\s\~\s\~"
+	syn region mmdFormatRules start="^-\s-\s-" end=".*\s*$"    keepend
+	syn region mmdFormatRules start="^=\s=\s=" end=".*\s*$"    keepend
+	syn region mmdFormatRules start="^\~\s\~\s\~" end=".*\s*$" keepend
 
 	
 " ===HILIGHTING===
@@ -344,7 +351,10 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 				" Links
 				hi def link mmdFormatLink                              Underlined
                                 hi def mmdFormatHyperLink                              ctermfg=darkyellow
-                                hi def mmdFormatPseudonym                              ctermfg=darkyellow
+                                hi def mmdFormatPseudonym                              ctermfg=lightgreen
+
+				" References
+				hi def mmdFormatReferenceMark                          ctermfg=lightgreen
 
 				" Escape Chars
 				hi def mmdFormatEscape                                 ctermfg=yellow
