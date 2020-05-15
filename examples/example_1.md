@@ -1,16 +1,3 @@
-/*
- * These are Meta-Data options, which are intended
- * to contain Preprocessing options, etc., sim-
- * ... ilar to the Preämble of a LaTeX document,
- * albeït not as elegantly delineäted from the text
- * body
- */
-
-//title:           Example MMD Document 1
-//author:          Matþew T. Scarbrough
-//draftdate:       05-12-2020
-//documenttype:    article
-
 #Example MMD Document 1
 
 The purpose of this series is to show what all M-Markdown strives to do;
@@ -76,21 +63,21 @@ As the name implies, `code`, or `monospace`, is often used for *code* or *shell 
 *italics*
 ***BI***
 _*IU*_
-_~*IUS*~_
-~*IS*~
+_*IUS*_
+*IS*
 
 **Bold**
 _**BU**_
-_~**BUS**~_
-~**BS**~
+_**BUS**_
+**BS**
 
-~Strike~
+Strike
 
 _Underline_
-_~US~_
+_US_
 
 _***All***_
-_~***ALL+***~_
+_***ALL+***_
 
 
 ###Block Formatting
@@ -108,7 +95,7 @@ In MD, these compile to block quotes and block quotes within block quotes.
 >This is a block quote of meaningless text.
 >>This is a block within a block.
 >This text is completely meaningless.
-> ~ No One
+>  No One
 
 
 ####Code Block
@@ -119,12 +106,12 @@ In MD, they are easily listed via four initial spaces ( ) or a lone tab.
     \1. #include <stdio.h>
     \2.
     \3. int main(void) {
-    \4.         printf("Hello, World!\n");
+    \4.         printf("Hello, World\!\n");
     \5. }
 
 And again:
 
-    % echo -n "\\ESC\[1;31mHello\\ESC\[32m, \\ESC\[33mWorld\\ESC\[34!\\ESC\[0m"
+    % echo -n "\\ESC\[1;31mHello\\ESC\[32m, \\ESC\[33mWorld\\ESC\[34\!\\ESC\[0m"
 
 _**NOTE**_**:** In order to avoid confusion with bulleted lists, do escape numbers and bullet characters, if put at the beginning of the line.
 
@@ -139,7 +126,7 @@ _**NOTE**_**:** In order to avoid confusion with bulleted lists, do escape numbe
 *Bulleted*, or *“unoreded”*, lists are lists that follow no hiërarchy (unlike a numbered list/outline.)
 They are dilineated in MD with any of the following characters:
 \*, \+, \-.
-But, in MMD, they can also be called with \~,
+But, in MMD, they can also be called with \,
 and they must have a space after the bullet character.
 
 * Take out the trash
@@ -163,7 +150,7 @@ While I cannot recall if it is good MD, it certainly is good MMD to indent lists
 * Go to the store; get:
     + Carrots
         - Raw
-	    ~ if out, settle for baby carrots
+	     if out, settle for baby carrots
     + Corn
         - Preferrably whole kernel corn
     + Organic beef steaks
@@ -257,7 +244,7 @@ You may put unly one or extend them unto the end of the line:
 
 ####MDD Extended Alternatives
 
-MDD has extended these, logically, using tildes (\~) and initial hashtags in increasingly diminishing order
+MDD has extended these, logically, using tildes (\) and initial hashtags in increasingly diminishing order
 
 
 #####MDD Ext. Alt. 1
@@ -291,23 +278,20 @@ H2 is the same as in MD, but, you add a poundsign (\#) from one four before to d
 H3 can alternatively be dileneäted with tildes.
 
 + H3\r
-  ~
+  
 
 Following the pattern, you may extend from H4 to H6 using one pound sign to three pound signs.
 
 + H3\r
-  ~
 + #H4\r
-  ~
 + ##H5\r
-  ~
 + ###H6\r
-  ~
+  
 
 
 ###Embedded Links
 
-Links and embedded links are shown via round ( \(\) ) and square ( \[\] ) brackets, as well as an exclamation point (!) and less than and greater than signs ( \<\> ).
+Links and embedded links are shown via round ( () ) and square ( \[\] ) brackets, as well as an exclamation point (\!) and less than and greater than signs ( \<\> ).
 
 
 ####Embedded URL's
@@ -321,7 +305,7 @@ Simple links that show the full URL are farmatted with the less/greater signs su
 
 Embedded links are made by placing the text you want to make clickable in either square brackets or in double quotes in the square brackets, then place the link in round brackets.
 
-For a more stream-lined \*NIX experience, [enter the Void, now](https://voidlinux.org)!
+For a more stream-lined \*NIX experience, [enter the Void, now](https://voidlinux.org)\!
 
 --or--
 
@@ -333,7 +317,7 @@ For a more stream-lined \*NIX experience, [enter the Void, now](https://voidlinu
 Using the same construct above, but adding an exclamation point before the initial square bracket.
 Just be sure to link directly to the location of the image itself.
 
-!["Debiän--stable, efficient, and better than Ubuntu!"](https://www.debian.org/Pics/openlogo-50.png)
+!["Debiän--stable, efficient, and better than Ubuntu\!"](https://www.debian.org/Pics/openlogo-50.png)
 
 The text in the quotes in the square brackets, represents text that would show when hovering over the image with a mouse.
 
@@ -342,7 +326,7 @@ The text in the quotes in the square brackets, represents text that would show w
 
 Similar to the previous, but wrap that within itself.
 
-[!["Pop!_OS, the only reason Ubuntu should exist!"](https://pop.system76.com/_nuxt/img/623f266-700.png)](https://pop.system76.com/)
+[!["Pop\!\_OS, the only reason Ubuntu should exist\!"](https://pop.system76.com/_nuxt/img/623f266-700.png)](https://pop.system76.com/)
 
 
 ####Footnotes, Endnotes, and References
@@ -383,12 +367,9 @@ They are exactly the same as footnotes, just manually place them at the end of t
 - - - -
 
 [2a]:  Example
-
 [^57]: Example
 
 
 ##Conclusion
 
-To compile this document as a normal Markdown, you will need to remove the comments and tags at the very beginning;
-the sister document to this (\*.md) is modified to be compatible with MD.
-Trying running `diff example_1.mmd example_1.md | less` to see the differences!
+This version shows what you might need to do to prepare the M-Markdown version for compiling as an MD file, if you are using MMD's syntax highlighting for ease of navigation, so long as you tried to keep *good MD* habits.

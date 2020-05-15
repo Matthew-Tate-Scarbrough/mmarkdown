@@ -3,7 +3,7 @@
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
 " Last Change:	2020 Mar 15
-" Version:	0.04
+" Version:	0.04c
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
 
@@ -64,7 +64,7 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 	syn cluster mmdBlocks     contains=@mmdHeaders,@mmdHeadersNouline,mmdBlockCode,mmdBlockQuote,mmdBlockList,mmdBlockListNumbered,mmdFormatRules
 	syn cluster mmdInline     contains=mmdInlineCode,mmdInlineItalics,mmdInlineBold,mmdInlineUnderline,mmdInlineStrikethrough
-	syn cluster mmdFormatting contains=@mmdFormatColours,mmdFormatCode,mmdFormatItalics,mmdFormatBold,mmdFormatUnderline,mmdFormatStrikethrough,mmdFormatItalicsBold,mmdFormatItalicsUnderline,mmdFormatItalicsStrike,mmdFormatBoldUnderline,mmdFormatBoldStrike,mmdFormatUnderlineStrike,mmdFormatAll,mmdFormatItalicsUnderlineStrike,mmdFormatBoldUnderlineStrike,mmdFormatAllPlus,mmdFormatEscape
+	syn cluster mmdFormatting contains=@mmdFormatColours,mmdFormatCode,mmdFormatComment,mmdFormatItalics,mmdFormatBold,mmdFormatUnderline,mmdFormatStrikethrough,mmdFormatItalicsBold,mmdFormatItalicsUnderline,mmdFormatItalicsStrike,mmdFormatBoldUnderline,mmdFormatBoldStrike,mmdFormatUnderlineStrike,mmdFormatAll,mmdFormatItalicsUnderlineStrike,mmdFormatBoldUnderlineStrike,mmdFormatAllPlus,mmdFormatEscape
 
 	syn cluster mmdHeaders        contains=mmdFormatH1,mmdFormatH2,mmdFormatH3,mmdFormatH4,mmdFormatH5,mmdFormatH6
 	syn cluster mmdHeadersNouline contains=mmdFormatH1Nouline,mmdFormatH2Nouline,mmdFormatH3Nouline,mmdFormatH4Nouline,mmdFormatH5Nouline,mmdFormatH6Nouline
@@ -75,27 +75,37 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 	" New-Fashioned
 	syn match mmdFormatH1nouline "^.\+\n=\+$"
+	syn match mmdFormatH1nouline "^.\+\n\s\+=\+$"
 	syn match mmdFormatH2nouline "^.\+\n-\+$"
+	syn match mmdFormatH2nouline "^.\+\n\s\+-\+$"
 	syn match mmdFormatH3nouline "^.\+\n\~\+$"
+	syn match mmdFormatH3nouline "^.\+\n\s\+\~\+$"
 
 		" New-Fashioned 2
 		syn match mmdFormatH3nouline "^#.\+\n-\+$"
+		syn match mmdFormatH3nouline "^#.\+\n\s\+-\+$"
 		syn match mmdFormatH4nouline "^##.\+\n-\+$"
+		syn match mmdFormatH4nouline "^##.\+\n\s\+-\+$"
 		syn match mmdFormatH5nouline "^###.\+\n-\+$"
+		syn match mmdFormatH5nouline "^###.\+\n\s\+-\+$"
 		syn match mmdFormatH6nouline "^####.\+\n-\+$"
+		syn match mmdFormatH6nouline "^####.\+\n\s\+-\+$"
 
 		" New-Fashioned 3 (Redundant redundancy)
 		syn match mmdFormatH4nouline "^#.\+\n\~\+$"
+		syn match mmdFormatH4nouline "^#.\+\n\s\+\~\+$"
 		syn match mmdFormatH5nouline "^##.\+\n\~\+$"
+		syn match mmdFormatH5nouline "^##.\+\n\s\+\~\+$"
 		syn match mmdFormatH6nouline "^###.\+\n\~\+$"
+		syn match mmdFormatH6nouline "^###.\+\n\s\+\~\+$"
 
 	" Old-Fashioned
-	syn region mmdFormatH1 matchgroup=mmdHeadingDelimiter start="##\@!"      end="#*\s*$" keepend oneline
-	syn region mmdFormatH2 matchgroup=mmdHeadingDelimiter start="###\@!"     end="#*\s*$" keepend oneline
-	syn region mmdFormatH3 matchgroup=mmdHeadingDelimiter start="####\@!"    end="#*\s*$" keepend oneline
-	syn region mmdFormatH4 matchgroup=mmdHeadingDelimiter start="#####\@!"   end="#*\s*$" keepend oneline
-	syn region mmdFormatH5 matchgroup=mmdHeadingDelimiter start="######\@!"  end="#*\s*$" keepend oneline
-	syn region mmdFormatH6 matchgroup=mmdHeadingDelimiter start="#######\@!" end="#*\s*$" keepend oneline
+	syn region mmdFormatH1 matchgroup=mmdHeadingDelimiter start="##\@!"          end="#*\s*$"     keepend oneline
+	syn region mmdFormatH2 matchgroup=mmdHeadingDelimiter start="###\@!"         end="#*\s*$"     keepend oneline
+	syn region mmdFormatH3 matchgroup=mmdHeadingDelimiter start="####\@!"        end="#*\s*$"     keepend oneline
+	syn region mmdFormatH4 matchgroup=mmdHeadingDelimiter start="#####\@!"       end="#*\s*$"     keepend oneline
+	syn region mmdFormatH5 matchgroup=mmdHeadingDelimiter start="######\@!"      end="#*\s*$"     keepend oneline
+	syn region mmdFormatH6 matchgroup=mmdHeadingDelimiter start="#######\@!"     end="#*\s*$"     keepend oneline
 
 
 " ===FORMATTING===
@@ -121,20 +131,20 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 		" Background (highlighting)
 		syn region mmdFormatColourHiBlack     matchgroup=mmdColoursDelimiter start=+\\hiblack"\|\\hiblack{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiBlue      matchgroup=mmdColoursDelimiter start=+\\hibl[ue]"\|\\hibl[ue]{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiBrown     matchgroup=mmdColoursDelimiter start=+\\hibr[own]"\|\\hibr[own]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiGreen     matchgroup=mmdColoursDelimiter start=+\\higr[een]"\|\\higr[een]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiCyan      matchgroup=mmdColoursDelimiter start=+\\hicy[an]"\|\\hicy[an]{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiRed       matchgroup=mmdColoursDelimiter start=+\\hir[ed]"\|\\hir[ed]{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiMagenta   matchgroup=mmdColoursDelimiter start=+\\him[agenta]"\|\\him[agenta]{+             matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiYellow    matchgroup=mmdColoursDelimiter start=+\\hiy[ellow]"\|\\hiy[ellow]{+               matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiWhite     matchgroup=mmdColoursDelimiter start=+\\hiwh[ite]"\|\\hiwh[ite]{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiBlue      matchgroup=mmdColoursDelimiter start=+\\hiblue"\|\\hiblue{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiBrown     matchgroup=mmdColoursDelimiter start=+\\hibrown"\|\\hibrown{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiGreen     matchgroup=mmdColoursDelimiter start=+\\higreen"\|\\higreen{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiCyan      matchgroup=mmdColoursDelimiter start=+\\hicyan"\|\\hicyan{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiRed       matchgroup=mmdColoursDelimiter start=+\\hired"\|\\hired{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiMagenta   matchgroup=mmdColoursDelimiter start=+\\himagenta"\|\\himagenta{+             matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiYellow    matchgroup=mmdColoursDelimiter start=+\\hiyellow"\|\\hiyellow{+               matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiWhite     matchgroup=mmdColoursDelimiter start=+\\hiwhite"\|\\hiwhite{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
 		syn region mmdFormatColourHiLightGrey matchgroup=mmdColoursDelimiter start=+\\higrey"\|\\higrey{\|\\higray"\|\\higray{+ matchgroup=mmdColoursDelimiter end=+"\|}+
 
 	" Comments
 	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="/\*"           matchgroup=mmdCommentDelimiter   end="\*/"  keepend
 	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="//"            matchgroup=mmdCommentDelimiter   end="\s*$" keepend
-	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="%"             matchgroup=mmdCommentDelimiter   end="\s*$" keepend
+	""""""""syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="%"             matchgroup=mmdCommentDelimiter   end="\s*$" keepend
 
 	" Meta Data Pre Proc
 	syn match mmdFormatMetaProc "^//"  nextgroup=@mmdMetaDataParams
