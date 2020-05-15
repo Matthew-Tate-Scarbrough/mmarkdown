@@ -39,32 +39,34 @@ The only things worth noting are modifications to heading syntax, as well as und
     #H1
     **-- or --**\
     Heading 1\
-    =========
+    \=
 
     ##H2
     **-- or --**\
     Heading 2\
-    ---------
+    \-
     
     ###H3
     **-- or --**\
     Heading 3\
-    ~~~~~~~~~\
+    ~
     **-- or --**\
     #Heading 3\
-    ----------
+    \-
     
     ####H4
     **-- or --**\
     ##Heading 3\
-    -----------
+    \-
+
+    And so-on
 
 3. Lead paragraphs are left un-indented.
 Body paragraphs should be indented either with to spaces (\s\s) at the start of the line or a single tab (\t);
 half that of what is needed to enter a `code` or `monospaced field.`
 
     Example Section\
-    ---------------
+    \-
     
     This is an example sentence--it is completely meaningless\
     and only serves as an example, pupsuant to the context.
