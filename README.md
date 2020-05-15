@@ -28,7 +28,7 @@ Something quick, lightweight, and extensible.
 What's Different?
 -----------------
 
-The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs[^1].
+The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs. [^1]
 
 1. Underline support is handled via removing interchangeability between asterisks (\*) and underlines (\_).
 
@@ -36,28 +36,28 @@ The only things worth noting are modifications to heading syntax, as well as und
 
 2. Basic heading syntax is built upon, not ovewritten--everything is the same.
 
-    #H1        -- or --        Heading 1
-                               =========
-    ##H2       -- or --        Heading 2
-                               ---------
-    ###H3      -- or --        Heading 3    -- or --    #Heading 3
-                               ~~~~~~~~~                ----------
-    ####H4     -- or --        ##Heading 3
-                               -----------
+    #H1        -- or --        Heading 1\r
+                               =========\r
+    ##H2       -- or --        Heading 2\r
+                               ---------\r
+    ###H3      -- or --        Heading 3    -- or --    #Heading 3\r
+                               ~~~~~~~~~                ----------\r
+    ####H4     -- or --        ##Heading 3\r
+                               -----------\r
     etc.
 
 3. Lead paragraphs are left un-indented.
 Body paragraphs should be indented either with to spaces (\s\s) at the start of the line or a single tab (\t);
 half that of what is needed to enter a `code` or `monospaced field.`
 
-    | Example Section
-    | ---------------
-    |
-    | This is an example sentence--it is completely meaningless
-    | and only serves as an example, pupsuant to the context.
-    |
-    |   This is yet another example sentence--it also is meaningless
-    | and serves as an example in the immediate context.
+    | Example Section\r
+    | ---------------\r
+    |\r
+    | This is an example sentence--it is completely meaningless\r
+    | and only serves as an example, pupsuant to the context.\r
+    |\r
+    |   This is yet another example sentence--it also is meaningless\r
+    | and serves as an example in the immediate context.\r
 
 Some users may not want to worry about remembering indention, if not for that it is not good Markdown syntax.
 Ideally, a compiler should be able to handle this automatically, with the ability to even remove distinction.
