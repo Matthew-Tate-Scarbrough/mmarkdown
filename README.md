@@ -36,17 +36,28 @@ The only things worth noting are modifications to heading syntax, as well as und
 
 2. Basic heading syntax is built upon, not ovewritten--everything is the same.
 
-    #H1        -- or --        Heading 1\
-                               =========
+    #H1
+    **-- or --**\
+    Heading 1\
+    =========
 
-    ##H2       -- or --        Heading 2\
-                               ---------
+    ##H2
+    **-- or --**\
+    Heading 2\
+    ---------
     
-    ###H3      -- or --        Heading 3    -- or --    #Heading 3\
-                               ~~~~~~~~~                ----------
+    ###H3
+    **-- or --**\
+    Heading 3\
+    ~~~~~~~~~\
+    **-- or --**\
+    #Heading 3\
+    ----------
     
-    ####H4     -- or --        ##Heading 3\
-                               -----------
+    ####H4
+    **-- or --**\
+    ##Heading 3\
+    -----------
 
 3. Lead paragraphs are left un-indented.
 Body paragraphs should be indented either with to spaces (\s\s) at the start of the line or a single tab (\t);
