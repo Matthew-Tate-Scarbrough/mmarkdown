@@ -36,36 +36,29 @@ The only things worth noting are modifications to heading syntax, as well as und
 
 2. Basic heading syntax is built upon, not ovewritten--everything is the same.
 
-    #H1        -- or --        Heading 1
+    #H1        -- or --        Heading 1\
                                =========
 
-    ##H2       -- or --        Heading 2
+    ##H2       -- or --        Heading 2\
                                ---------
     
-    ###H3      -- or --        Heading 3    -- or --    #Heading 3
+    ###H3      -- or --        Heading 3    -- or --    #Heading 3\
                                ~~~~~~~~~                ----------
     
-    ####H4     -- or --        ##Heading 3
+    ####H4     -- or --        ##Heading 3\
                                -----------
 
 3. Lead paragraphs are left un-indented.
 Body paragraphs should be indented either with to spaces (\s\s) at the start of the line or a single tab (\t);
 half that of what is needed to enter a `code` or `monospaced field.`
 
-    Example Section
-    
+    Example Section\
     ---------------
     
-    
-    
-    This is an example sentence--it is completely meaningless
-    
+    This is an example sentence--it is completely meaningless\
     and only serves as an example, pupsuant to the context.
     
-    
-    
-      This is yet another example sentence--it also is meaningless
-    
+      This is yet another example sentence--it also is meaningless\
     and serves as an example in the immediate context.
     
 
@@ -105,7 +98,7 @@ And for background colours:
 How to Use the Syntax File(s)?
 ------------------------------
 
-###Cloning the Repo
+**Cloning the Repo**
 
 I recommend creating a directory in your `~/Downloads`, called `.src`, for all source code. but you may prefer to put it elsewhere.
 
@@ -113,7 +106,7 @@ I recommend creating a directory in your `~/Downloads`, called `.src`, for all s
 2. `git clone https://github.com/Matthew-Tate-Scarbrough/mmarkdown.git ~/Downloads/.src/mmarkdown`
 
  
-###VIM
+**VIM**
 
 For Vim, simply do the following:
 
@@ -126,7 +119,7 @@ add the following line to your `.vimrc`:
 
 6. `vim ~/.vimrc`, then add the line: `au BufRead,BufNewFile *.mmd,*.txt set filetype=mmarkdown syntax=mmarkdown`
 
-###NeoVim
+**NeoVim**
 
 For NeoVim, the process is similar to above
 
