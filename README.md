@@ -28,7 +28,7 @@ Something quick, lightweight, and extensible.
 What's Different?
 -----------------
 
-The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs. [^1]
+The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs[^1].
 
 1. Underline support is handled via removing interchangeability between asterisks (\*) and underlines (\_).
 
