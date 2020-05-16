@@ -49,15 +49,18 @@ The only things worth noting are modifications to heading syntax, as well as und
     ###H3
     **-- or --**\
     Heading 3\
-    ~
+    ~\
     **-- or --**\
     #Heading 3\
     \-
     
     ####H4
     **-- or --**\
-    ##Heading 3\
+    ##Heading 4\
     \-
+    **-- or --**\
+    #Heading 4\
+    ~
 
     And so-on
 
