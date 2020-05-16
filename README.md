@@ -4,7 +4,7 @@ M-Markdown
 ==========
 
 M-Markdown is a modern markup language, based upon the popular, intuitive, Markdown.
-From note-taking to screenplays and novels, it specifically targets writers, who simply who want a plain-text, easy-to-read, elegant markup language for all of their projects.
+From note-taking to screenplays and novels, it specifically targets writers, who simply want a plain-text, easy-to-read, elegant markup language for all of their projects.
 It aims to be a general purpose markup language, chiefly with the intention of being compiled directly into portable document formats, such as Adobe's *PDF* or AT&T's *DjVu*.
 To this end, where Markdown depends on CSS for complex styling, M-Markdown seeks to be able to allow the user to style things directly.
 
@@ -28,13 +28,13 @@ Something quick, lightweight, and extensible.
 What's Different?
 -----------------
 
-The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs[^1].
+The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs, which would be handled in a compiler[^1].
 
 1. Underline support is handled via removing interchangeability between asterisks (\*) and underlines (\_).
 
     _underlined text_
 
-2. Basic heading syntax is built upon, not ovewritten--everything is the same.
+2. Basic heading syntax is built upon, not overwritten--everything is the same.
 
     #H1
     **-- or --**\
@@ -65,8 +65,8 @@ The only things worth noting are modifications to heading syntax, as well as und
     And so-on
 
 3. Lead paragraphs are left un-indented.
-Body paragraphs should be indented either with to spaces (\s\s) at the start of the line or a single tab (\t);
-half that of what is needed to enter a `code` or `monospaced field.`
+Body paragraphs should be indented either with two spaces (\s\s) at the start of the line,
+half that of what is needed to enter a `code` or `monospaced block`
 
     Example Section\
     \-
@@ -108,7 +108,7 @@ And for background colours:
     \\higrey" ... "    -- or -- \\higrey{ ... }  -- or -- “higray” in place of “higrey”
 
 
-[^1]: **NOTE:** As of `v0.04` of the *Vim* syntax file, it does not have any support for Bode/Lead paragraph distinctions, as it has not been planned out yet.
+[^1]: **NOTE:** As of `v0.04` of the *Vim* syntax file, it does not have any support for Body/Lead paragraph distinctions, as it has not been planned out yet.
 
 
 How to Use the Syntax File(s)?
