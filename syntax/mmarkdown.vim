@@ -2,8 +2,8 @@
 " Language:	M-Markdown
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
-" Last Change:	2020 Mar 15
-" Version:	0.04c
+" Last Change:	2020 Mar 25
+" Version:	0.04d
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
 
@@ -48,6 +48,9 @@ endif
 
 	" The cluster...
 	syn cluster mmdMetaDataParams contains=mmdMetaTagsGeneral,mmdMetaTagsAuthor,mmdMetaTagsAgent,mmdMetaTagsPaper
+
+	" Comment Specifics
+	syn keyword mmdCommentNotes NOTE TODO HACK OPTIMISE OPTIMIZE IMPROVE IGNORE FIX REMOVE contained
  
 
 " ===ENTRANCE===
@@ -131,19 +134,19 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 		" Background (highlighting)
 		syn region mmdFormatColourHiBlack     matchgroup=mmdColoursDelimiter start=+\\hiblack"\|\\hiblack{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiBlue      matchgroup=mmdColoursDelimiter start=+\\hiblue"\|\\hiblue{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiBrown     matchgroup=mmdColoursDelimiter start=+\\hibrown"\|\\hibrown{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiGreen     matchgroup=mmdColoursDelimiter start=+\\higreen"\|\\higreen{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiCyan      matchgroup=mmdColoursDelimiter start=+\\hicyan"\|\\hicyan{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiRed       matchgroup=mmdColoursDelimiter start=+\\hired"\|\\hired{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiMagenta   matchgroup=mmdColoursDelimiter start=+\\himagenta"\|\\himagenta{+             matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiYellow    matchgroup=mmdColoursDelimiter start=+\\hiyellow"\|\\hiyellow{+               matchgroup=mmdColoursDelimiter end=+"\|}+
-		syn region mmdFormatColourHiWhite     matchgroup=mmdColoursDelimiter start=+\\hiwhite"\|\\hiwhite{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiBlue      matchgroup=mmdColoursDelimiter start=+\\hiblue"\|\\hiblue{+                       matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiBrown     matchgroup=mmdColoursDelimiter start=+\\hibrown"\|\\hibrown{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiGreen     matchgroup=mmdColoursDelimiter start=+\\higreen"\|\\higreen{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiCyan      matchgroup=mmdColoursDelimiter start=+\\hicyan"\|\\hicyan{+                       matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiRed       matchgroup=mmdColoursDelimiter start=+\\hired"\|\\hired{+                         matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiMagenta   matchgroup=mmdColoursDelimiter start=+\\himagenta"\|\\himagenta{+                 matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiYellow    matchgroup=mmdColoursDelimiter start=+\\hiyellow"\|\\hiyellow{+                   matchgroup=mmdColoursDelimiter end=+"\|}+
+		syn region mmdFormatColourHiWhite     matchgroup=mmdColoursDelimiter start=+\\hiwhite"\|\\hiwhite{+                     matchgroup=mmdColoursDelimiter end=+"\|}+
 		syn region mmdFormatColourHiLightGrey matchgroup=mmdColoursDelimiter start=+\\higrey"\|\\higrey{\|\\higray"\|\\higray{+ matchgroup=mmdColoursDelimiter end=+"\|}+
 
 	" Comments
-	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="/\*"           matchgroup=mmdCommentDelimiter   end="\*/"  keepend
-	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="//"            matchgroup=mmdCommentDelimiter   end="\s*$" keepend
+	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="/\*"           matchgroup=mmdCommentDelimiter   end="\*/"  keepend contains=mmdCommentNotes
+	syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="//"            matchgroup=mmdCommentDelimiter   end="\s*$" keepend contains=mmdCommentNotes
 	""""""""syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="%"             matchgroup=mmdCommentDelimiter   end="\s*$" keepend
 
 	" Meta Data Pre Proc
@@ -264,7 +267,7 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	" FORMATTING
 
 		" Rules
-		hi def mmdFormatRules cterm=strikethrough,bold
+		hi def mmdFormatRules cterm=strikethrough,bold                                                    gui=strikethrough,bold
 
 		" Colours
 			
@@ -274,42 +277,42 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 			" Formatting
 
 				" Foreground
-				hi def mmdFormatColourBlack       ctermfg=black        ctermbg=white
-				hi def mmdFormatColourBlue        ctermfg=blue
-				hi def mmdFormatColourBrown       ctermfg=darkyellow   
-				hi def mmdFormatColourLightGrey   ctermfg=lightgrey
-				hi def mmdFormatColourGreen       ctermfg=green
-				hi def mmdFormatColourCyan        ctermfg=cyan
-				hi def mmdFormatColourRed         ctermfg=red
-				hi def mmdFormatColourMagenta     ctermfg=magenta
-				hi def mmdFormatColourYellow      ctermfg=yellow
-				hi def mmdFormatColourWhite       ctermfg=white        ctermbg=black
+				hi def mmdFormatColourBlack       ctermfg=black        ctermbg=white              guifg=black        guibg=white
+				hi def mmdFormatColourBlue        ctermfg=blue                                    guifg=blue
+				hi def mmdFormatColourBrown       ctermfg=darkyellow                              guifg=darkyellow   
+				hi def mmdFormatColourLightGrey   ctermfg=lightgrey                               guifg=lightgrey
+				hi def mmdFormatColourGreen       ctermfg=green                                   guifg=green
+				hi def mmdFormatColourCyan        ctermfg=cyan                                    guifg=cyan
+				hi def mmdFormatColourRed         ctermfg=red                                     guifg=red
+				hi def mmdFormatColourMagenta     ctermfg=magenta                                 guifg=magenta
+				hi def mmdFormatColourYellow      ctermfg=yellow                                  guifg=yellow
+				hi def mmdFormatColourWhite       ctermfg=white        ctermbg=black              guifg=white        guibg=black
 
 				" Background (Highlighting)
-				hi def mmdFormatColourHiBlack     ctermbg=black        ctermfg=yellow
-				hi def mmdFormatColourHiBlue      ctermbg=blue
-				hi def mmdFormatColourHiBrown     ctermbg=darkyellow   
-				hi def mmdFormatColourHiLightGrey ctermbg=lightgrey
-				hi def mmdFormatColourHiGreen     ctermbg=green
-				hi def mmdFormatColourHiCyan      ctermbg=cyan
-				hi def mmdFormatColourHiRed       ctermbg=red
-				hi def mmdFormatColourHiMagenta   ctermbg=magenta
-				hi def mmdFormatColourHiYellow    ctermbg=yellow
-				hi def mmdFormatColourHiWhite     ctermbg=white        ctermfg=black
+				hi def mmdFormatColourHiBlack     ctermbg=black        ctermfg=yellow             guibg=black        guifg=yellow
+				hi def mmdFormatColourHiBlue      ctermbg=blue                                    guibg=blue
+				hi def mmdFormatColourHiBrown     ctermbg=darkyellow                              guibg=darkyellow   
+				hi def mmdFormatColourHiLightGrey ctermbg=lightgrey                               guibg=lightgrey
+				hi def mmdFormatColourHiGreen     ctermbg=green                                   guibg=green
+				hi def mmdFormatColourHiCyan      ctermbg=cyan                                    guibg=cyan
+				hi def mmdFormatColourHiRed       ctermbg=red                                     guibg=red
+				hi def mmdFormatColourHiMagenta   ctermbg=magenta                                 guibg=magenta
+				hi def mmdFormatColourHiYellow    ctermbg=yellow                                  guibg=yellow
+				hi def mmdFormatColourHiWhite     ctermbg=white        ctermfg=black              guibg=white        guifg=black
 
 			" Font Faces
 
 				" Delimiter
 				hi def link mmdCommentDelimiter   Comment
 				hi def link mmdFaceDelimiter      Delimiter
-				hi def      mmdLinkDelimiter      ctermfg=darkyellow
+				hi def      mmdLinkDelimiter      ctermfg=darkyellow                              guifg=darkyellow
 
 				" Inline
 				hi def link mmdFormatComment      Comment
-				hi def mmdFormatMetaProc          cterm=bold           ctermfg=cyan
+				hi def mmdFormatMetaProc          cterm=bold           ctermfg=cyan               gui=bold           guifg=cyan
 				hi def link mmdFormatMetaDataParams mmdFormatMetaProc
 				hi def link mmdFormatMetaData     Preproc
-				hi def mmdFormatCode              ctermfg=cyan         ctermbg=darkblue
+				hi def mmdFormatCode              ctermfg=white        ctermbg=darkblue           guifg=white        guibg=darkblue
 
 					" Meta
 					hi def link mmdMetaTagsGeneral mmdFormatMetaProc
@@ -317,29 +320,32 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 					hi def link mmdMetaTagsAgent   mmdFormatMetaProc
 					hi def link mmdMetaTagsPaper   mmdFormatMetaProc
 
+					" Other Keywords
+					hi def mmdCommentNotes    cterm=bold,underline      ctermfg=darkcyan      gui=bold,underline guifg=darkcyan
+
 					" Italics
-					hi def mmdFormatItalics                        cterm=italic
-						hi def mmdFormatItalicsBold            cterm=italic,bold
-						hi def mmdFormatItalicsUnderline       cterm=italic,underline
-						hi def mmdFormatItalicsUnderlineStrike cterm=italic,underline,strikethrough
-						hi def mmdFormatItalicsStrike          cterm=italic,strikethrough
-
-					" Bold
-					hi def mmdFormatBold                           cterm=bold
-						hi def mmdFormatBoldUnderline          cterm=bold,underline
-						hi def mmdFormatBoldUnderlineStrike    cterm=bold,underline,strikethrough
-						hi def mmdFormatBoldStrike             cterm=bold,strikethrough
-
-					" Underline
-					hi def mmdFormatUnderline                      cterm=underline
-						hi def mmdFormatUnderlineStrike        cterm=underline,strikethrough
-
-					" Strikethrough
-					hi def mmdFormatStrikethrough                  cterm=strikethrough
-
-					" All
-					hi def mmdFormatAll                            cterm=italic,bold,underline
-					hi def mmdFormatAllPlus                        cterm=italic,bold,underline,strikethrough
+					hi def mmdFormatItalics                        cterm=italic                                 gui=italic
+						hi def mmdFormatItalicsBold            cterm=italic,bold                            gui=italic,bold
+						hi def mmdFormatItalicsUnderline       cterm=italic,underline                       gui=italic,underline
+						hi def mmdFormatItalicsUnderlineStrike cterm=italic,underline,strikethrough         gui=italic,underline,strikethrough
+						hi def mmdFormatItalicsStrike          cterm=italic,strikethrough                   gui=italic,strikethrough
+                                                                                                                                                                              
+					" Bold                                                                                                                                
+					hi def mmdFormatBold                           cterm=bold                                   gui=bold
+						hi def mmdFormatBoldUnderline          cterm=bold,underline                         gui=bold,underline
+						hi def mmdFormatBoldUnderlineStrike    cterm=bold,underline,strikethrough           gui=bold,underline,strikethrough
+						hi def mmdFormatBoldStrike             cterm=bold,strikethrough                     gui=bold,strikethrough
+                                                                                                                                                                              
+					" Underline                                                                                                                           
+					hi def mmdFormatUnderline                      cterm=underline                              gui=underline
+						hi def mmdFormatUnderlineStrike        cterm=underline,strikethrough                gui=underline,strikethrough
+                                                                                                                                                                              
+					" Strikethrough                                                                                                                       
+					hi def mmdFormatStrikethrough                  cterm=strikethrough                          gui=strikethrough
+                                                                                                                                                                              
+					" All                                                                                                                                 
+					hi def mmdFormatAll                            cterm=italic,bold,underline                  gui=italic,bold,underline
+					hi def mmdFormatAllPlus                        cterm=italic,bold,underline,strikethrough    gui=italic,bold,underline,strikethrough
 
 					" Inline
 					hi def link mmdInlineComments      mmdFormatComment
@@ -355,19 +361,19 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 				hi def mmdFormatUnderlineStrike
 
 				" Block Quotes
-				hi def mmdFormatBlockQuote                             ctermfg=white                             ctermbg=darkmagenta
-				hi def mmdFormatBlockQuote2                            ctermfg=lightgreen                        ctermbg=darkmagenta
+				hi def mmdFormatBlockQuote        ctermfg=white          ctermbg=darkmagenta      guifg=white          guibg=darkmagenta
+				hi def mmdFormatBlockQuote2       ctermfg=lightgreen     ctermbg=darkmagenta      guifg=lightgreen     guibg=darkmagenta
 
 				" Links
-				hi def link mmdFormatLink                              Underlined
-                                hi def mmdFormatHyperLink                              ctermfg=darkyellow
-                                hi def mmdFormatPseudonym                              ctermfg=lightgreen
-
-				" References
-				hi def mmdFormatReferenceMark                          ctermfg=lightgreen
-
-				" Escape Chars
-				hi def mmdFormatEscape                                 ctermfg=yellow
+				hi def link mmdFormatLink         Underlined
+                                hi def mmdFormatHyperLink         ctermfg=darkyellow                              guifg=darkyellow
+                                hi def mmdFormatPseudonym         ctermfg=lightgreen                              guifg=lightgreen
+                                                                                                                                     
+				" References                                                                                         
+				hi def mmdFormatReferenceMark     ctermfg=lightgreen                              guifg=lightgreen
+                                                                                                                                     
+				" Escape Chars                                                                                       
+				hi def mmdFormatEscape            ctermfg=yellow                                  guifg=yellow
 
 
 let b:current_syntax = "mmarkdown"

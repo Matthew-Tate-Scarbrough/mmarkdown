@@ -1,5 +1,6 @@
 !["M-MD Agaist MD in Native Formatting"](mmd_0_04c.png)
 
+
 M-Markdown
 ==========
 
@@ -122,7 +123,7 @@ I recommend creating a directory in your `~/Downloads`, called `.src`, for all s
 2. `git clone https://github.com/Matthew-Tate-Scarbrough/mmarkdown.git ~/Downloads/.src/mmarkdown`
 
  
-**VIM**
+**VIM/GVIM**
 
 For Vim, simply do the following:
 
