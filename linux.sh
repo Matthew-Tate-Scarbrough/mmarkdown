@@ -1,6 +1,6 @@
 #!/bin/sh
 # Yes, really, a script this simple but, rule #1, if
-# you are gonno do something more than twice--script
+# you are gonna do something more than twice--script
 
 [[ -e /usr/bin/nvim ]] && mkdir -p .config/nvim/syntax && cp -f syntax/mmarkdown.vim $HOME/.config/nvim/syntax/
 
