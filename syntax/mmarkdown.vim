@@ -67,7 +67,7 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 	syn cluster mmdBlocks     contains=@mmdHeaders,@mmdHeadersNouline,mmdBlockCode,mmdBlockQuote,mmdBlockList,mmdBlockListNumbered,mmdFormatRules
 	syn cluster mmdInline     contains=mmdInlineCode,mmdInlineItalics,mmdInlineBold,mmdInlineUnderline,mmdInlineStrikethrough
-	syn cluster mmdFormatting contains=@mmdFormatColours,mmdFormatCode,mmdFormatComment,mmdFormatItalics,mmdFormatBold,mmdFormatUnderline,mmdFormatStrikethrough,mmdFormatItalicsBold,mmdFormatItalicsUnderline,mmdFormatItalicsStrike,mmdFormatBoldUnderline,mmdFormatBoldStrike,mmdFormatUnderlineStrike,mmdFormatAll,mmdFormatItalicsUnderlineStrike,mmdFormatBoldUnderlineStrike,mmdFormatAllPlus,mmdFormatEscape
+	syn cluster mmdFormatting contains=@mmdFormatColours,mmdFormatCode,mmdFormatComment,mmdFormatItalics,mmdFormatBold,mmdFormatUnderline,mmdFormatStrikethrough,mmdFormatItalicsBold,mmdFormatItalicsUnderline,mmdFormatItalicsStrike,mmdFormatBoldUnderline,mmdFormatBoldStrike,mmdFormatUnderlineStrike,mmdFormatAll,mmdFormatItalicsUnderlineStrike,mmdFormatBoldUnderlineStrike,mmdFormatAllPlus,mmdFormatEscape,mmdFormatReferenceMark
 
 	syn cluster mmdHeaders        contains=mmdFormatH1,mmdFormatH2,mmdFormatH3,mmdFormatH4,mmdFormatH5,mmdFormatH6
 	syn cluster mmdHeadersNouline contains=mmdFormatH1Nouline,mmdFormatH2Nouline,mmdFormatH3Nouline,mmdFormatH4Nouline,mmdFormatH5Nouline,mmdFormatH6Nouline
