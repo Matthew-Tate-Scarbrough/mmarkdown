@@ -1,4 +1,4 @@
-!["M-MD Agaist MD in Native Formatting"](mmd_0_04c.png)
+!["Permutations of highlighting for H1-H3 and Code sections"](mmd_0_04e.png)
 
 
 M-Markdown
@@ -8,6 +8,12 @@ M-Markdown is a modern markup language, based upon the popular, intuitive, Markd
 From note-taking to screenplays and novels, it specifically targets writers, who simply want a plain-text, easy-to-read, elegant markup language for all of their projects.
 It aims to be a general purpose markup language, chiefly with the intention of being compiled directly into portable document formats, such as Adobe's *PDF* or AT&T's *DjVu*.
 To this end, where Markdown depends on CSS for complex styling, M-Markdown seeks to be able to allow the user to style things directly.
+
+
+What's New?
+-----------
+
+Vim Syntax File — added highlighting permutations for H1–H3 and code sections
 
 
 Goal
