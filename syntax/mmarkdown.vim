@@ -2,8 +2,8 @@
 " Language:	M-Markdown
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
-" Last Change:	2020 June 27
-" Version:	0.04g
+" Last Change:	2020 June 28
+" Version:	0.04h
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
 
@@ -158,9 +158,10 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	syn match mmdFormatMetaData ".\+$" contained    contains=mmdFormatComment
 
 	" Code
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"     matchgroup=mmdFaceDelimiter    end="\s*$" keepend   contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                  matchgroup=mmdFaceDelimiter    end="`"    keepend   contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="```"                matchgroup=mmdFaceDelimiter    end="```"  keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"     matchgroup=mmdFaceDelimiter    end="\s*$"  keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                  matchgroup=mmdFaceDelimiter    end="`"     keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="```"                matchgroup=mmdFaceDelimiter    end="```"   keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^----"              matchgroup=mmdFaceDelimiter    end="^----" keepend   contains=@mmdFaceFormattingCode
 
 	" Font Faces
 
