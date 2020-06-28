@@ -2,8 +2,8 @@
 " Language:	M-Markdown
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
-" Last Change:	2020 Mar 28
-" Version:	0.04e
+" Last Change:	2020 June 27
+" Version:	0.04g
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
 
@@ -105,12 +105,12 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 		syn match mmdFormatH6nouline "^###.\+\n\s\+\~\+$" contains=@mmdFaceFormatting
 
 	" Old-Fashioned
-	syn region mmdFormatH1 matchgroup=mmdHeadingDelimiter start="##\@!"          end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH1
-	syn region mmdFormatH2 matchgroup=mmdHeadingDelimiter start="###\@!"         end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH2
-	syn region mmdFormatH3 matchgroup=mmdHeadingDelimiter start="####\@!"        end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
-	syn region mmdFormatH4 matchgroup=mmdHeadingDelimiter start="#####\@!"       end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
-	syn region mmdFormatH5 matchgroup=mmdHeadingDelimiter start="######\@!"      end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
-	syn region mmdFormatH6 matchgroup=mmdHeadingDelimiter start="#######\@!"     end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
+	syn region mmdFormatH1 matchgroup=mmdHeadingDelimiter start="^#\s\|^\s*#\s\|^#\|^\s*#"                        end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH1
+	syn region mmdFormatH2 matchgroup=mmdHeadingDelimiter start="^##\s\|^\s*##\s\|^##\|^\s*##"                    end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH2
+	syn region mmdFormatH3 matchgroup=mmdHeadingDelimiter start="^###\s\|^\s*###\s\|^###\|^\s*###"                end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
+	syn region mmdFormatH4 matchgroup=mmdHeadingDelimiter start="^####\s\|^\s*####\s\|^####\|^\s*####"            end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
+	syn region mmdFormatH5 matchgroup=mmdHeadingDelimiter start="^#####\s\|^\s*#####\s\|^#####\|^\s*#####"        end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
+	syn region mmdFormatH6 matchgroup=mmdHeadingDelimiter start="^######\s\|^\s*######\s\|^######\|^\s*######"    end="#*\s*$"     keepend oneline contains=@mmdFaceFormattingH3
 
 
 " ===FORMATTING===

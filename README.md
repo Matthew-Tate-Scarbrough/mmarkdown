@@ -1,4 +1,4 @@
-!["Permutations of highlighting for H1-H3 and Code sections"](mmd_0_04e.png)
+!["Pandoc headers"](mmd_0_04g.png)
 
 
 M-Markdown
