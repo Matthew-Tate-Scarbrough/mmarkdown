@@ -3,7 +3,7 @@
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
 " Last Change:	2020 June 28
-" Version:	0.04h
+" Version:	0.04i
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
 
@@ -153,8 +153,8 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 	" Meta Data Pre Proc
 	syn match mmdFormatMetaProc "^//"  nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaProc "^%%"  nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaProc "^%"   nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaProc "^%%\|^%%\s*"  nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaProc "^%\|^%\s*"   nextgroup=@mmdMetaDataParams
 	syn match mmdFormatMetaData ".\+$" contained    contains=mmdFormatComment
 
 	" Code
