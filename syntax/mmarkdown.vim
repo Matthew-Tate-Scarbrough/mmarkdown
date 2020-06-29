@@ -153,8 +153,8 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 
 	" Meta Data Pre Proc
 	syn match mmdFormatMetaProc "^//"  nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaProc "^%%\|^%%\s*"  nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaProc "^%\|^%\s*"   nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaProc "^%%\|^%%\s"  nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaProc "^%\|^%\s"   nextgroup=@mmdMetaDataParams
 	syn match mmdFormatMetaData ".\+$" contained    contains=mmdFormatComment
 
 	" Code
