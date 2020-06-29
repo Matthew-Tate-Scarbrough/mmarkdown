@@ -152,10 +152,10 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	""""""""syn region mmdFormatComment       matchgroup=mmdCommentDelimiter start="%"             matchgroup=mmdCommentDelimiter   end="\s*$" keepend
 
 	" Meta Data Pre Proc
-	syn match mmdFormatMetaProc "^//"  nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaProc "^%%\|^%%\s"  nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaProc "^%\|^%\s"   nextgroup=@mmdMetaDataParams
-	syn match mmdFormatMetaData ".\+$" contained    contains=mmdFormatComment
+	syn match mmdFormatMetaProc "^//"   skipwhite nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaProc "^%%"   skipwhite nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaProc "^%"    skipwhite nextgroup=@mmdMetaDataParams
+	syn match mmdFormatMetaData ".\+$"  contained contains=mmdFormatComment
 
 	" Code
 	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"     matchgroup=mmdFaceDelimiter    end="\s*$"  keepend   contains=@mmdFaceFormattingCode
