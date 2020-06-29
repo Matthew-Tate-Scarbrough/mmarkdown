@@ -13,7 +13,7 @@ To this end, where Markdown depends on CSS for complex styling, M-Markdown seeks
 What's New?
 -----------
 
-Vim Syntax File — added highlighting permutations for H1–H3 and code sections
+Now at `v.0.05` the syntax file has basic support for Pandoc Markdown quirks
 
 
 Goal
