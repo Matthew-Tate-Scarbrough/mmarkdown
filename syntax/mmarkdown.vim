@@ -158,11 +158,11 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	syn match mmdFormatMetaData ".\+$"  contained contains=mmdFormatComment
 
 	" Code
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"               matchgroup=mmdFaceDelimiter    end="\s*$"      keepend   contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\s\s\s\s\|^\t\t"     matchgroup=mmdFaceDelimiter    end="\s*$"      keepend   contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                            matchgroup=mmdFaceDelimiter    end="`"         keepend   contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="```"                          matchgroup=mmdFaceDelimiter    end="```"       keepend   contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\~\~\~\~"                    matchgroup=mmdFaceDelimiter    end="^\~\~\~\~" keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\|^\t"               matchgroup=mmdFaceDelimiter    end="\s*$"        keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\s\s\s\s\s\s\s\s\|^\t\t"     matchgroup=mmdFaceDelimiter    end="\s*$"        keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                            matchgroup=mmdFaceDelimiter    end="`"           keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="\n\+^```\s*$"        skip="`" matchgroup=mmdFaceDelimiter    end="^```\s*$\+\n"     keepend   contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\~\~\~\~"                    matchgroup=mmdFaceDelimiter    end="^\~\~\~\~"   keepend   contains=@mmdFaceFormattingCode
 
 	" Font Faces
 
