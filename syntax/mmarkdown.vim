@@ -213,47 +213,49 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	syn region mmdFormatBlockQuote2   matchgroup=mmdCommentDelimiter start="^>\s>\s\|^\s\s\s\s>\s>\s\|^\t>\s>\s" matchgroup=mmdCommentDelimiter   end="\s*$"   keepend oneline contains=@mmdInline
 
 	" Lists
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[-*+~]\s"                      matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[-*+~]\s"                   matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[-*+~]\s"       matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[-*+~]\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
 
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.\s"                                                    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.)\s"                                                   matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                            matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                           matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"   matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                                        matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                                                       matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                               matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"        matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"       matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.\s"     matchgroup=mmdFaceDelimiter end="$" keepend oneline contains=@mmdFormatting
+	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.\s"  matchgroup=mmdFaceDelimiter end="$" keepend oneline contains=@mmdFormatting
+	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.)\s"    matchgroup=mmdFaceDelimiter end="$" keepend oneline contains=@mmdFormatting
+	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.)\s" matchgroup=mmdFaceDelimiter end="$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"   matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"   matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"     matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                               matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"        matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"       matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
 
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.\s"                                                 matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.)\s"                                                matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                         matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                        matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                                                             matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                                                                            matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                                     matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                                                    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                             matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                            matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"     matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-	syn region mmdFormatList          matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
-
-	" Links
-	syn region mmdFormatLink          matchgroup=mmdFaceDelimiter start="<"                matchgroup=mmdFaceDelimiter end=">"      keepend oneline
-	syn region mmdFormatLink          matchgroup=mmdLinkDelimiter start=+(+                matchgroup=mmdLinkDelimiter end=+)\|)\]+ keepend oneline contained
-	syn region mmdFormatHyperLink     matchgroup=mmdLinkDelimiter start="\["               matchgroup=mmdLinkDelimiter end="\]"     nextgroup=mmdFormatLink,mmdFormatHyperLink contains=@mmdInline,mmdFormatHyperLink,mmdFormatPseudonym
-	syn region mmdFormatHyperLink     matchgroup=mmdLinkDelimiter start="\!\["             matchgroup=mmdLinkDelimiter end="\]"     keepend oneline nextgroup=mmdFormatLink,mmdFormatHyperLink contains=@mmdInline,mmdFormatHyperLink,mmdFormatPseudonym
-	syn region mmdFormatPseudonym     matchgroup=mmdLinkDelimiter start=+"+                matchgroup=mmdLinkDelimiter end=+"+      keepend oneline contained
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                         matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                        matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                                                             matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                                                                            matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                                                     matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                                                    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"                             matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"                            matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.\s"     matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
+"""	syn region mmdFormatList    matchgroup=mmdCommentDelimiter start="^\s*[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.[[0-9A-Za-z[:alnum:]]*\.)\s"    matchgroup=mmdFaceDelimiter end="\s*$" keepend oneline contains=@mmdFormatting
 
 	" Footnotes/References
 	syn match  mmdFormatReferenceMark "\[[0-9A-Za-z[:alnum:]]*\]\|\[[0-9A-Za-z[:alnum:]]*\]"
 	syn match  mmdFormatReferenceMark "\[^[0-9A-Za-z[:alnum:]]*\]\|\[^[0-9A-Za-z[:alnum:]]*\]"
 	syn region mmdFormatReferenceMark start="\[[0-9A-Za-z[:alnum:]]*\]:\s\|\[[0-9A-Za-z[:alnum:]]*\]:\s"    end="\n\n" keepend
 	syn region mmdFormatReferenceMark start="\[^[0-9A-Za-z[:alnum:]]*\]:\s\|\[^[0-9A-Za-z[:alnum:]]*\]:\s"  end="\n\n" keepend
+
+
+	" Links
+	syn region mmdFormatLink         matchgroup=mmdFaceDelimiter start="<"       matchgroup=mmdFaceDelimiter end=">"      keepend oneline
+	syn region mmdFormatHyperLink    matchgroup=mmdLinkDelimiter start="\["      matchgroup=mmdLinkDelimiter end="\]("    oneline nextgroup=mmdFormatLink,mmdFormatHyperLink contains=@mmdInline,mmdFormatHyperLink,mmdFormatPseudonym
+	syn region mmdFormatHyperLink    matchgroup=mmdLinkDelimiter start="\!\["    matchgroup=mmdLinkDelimiter end="\]("    oneline nextgroup=mmdFormatLink,mmdFormatHyperLink contains=@mmdInline,mmdFormatHyperLink,mmdFormatPseudonym
+	syn region mmdFormatLink         matchgroup=mmdLinkDelimiter start=++        matchgroup=mmdLinkDelimiter end=+)\|)\]+ oneline contained
+	syn region mmdFormatPseudonym    matchgroup=mmdLinkDelimiter start=+"+       matchgroup=mmdLinkDelimiter end=+"+      oneline contained
+
 
 	" Rules
 	syn region mmdFormatRules start="^-\s-\s-" end=".*\s*$"    keepend oneline
