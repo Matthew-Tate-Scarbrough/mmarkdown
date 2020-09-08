@@ -2,8 +2,8 @@
 " Language:	M-Markdown
 " Filenames:	*.mmarkdown, *.mmd, *.markdown, *.md, *.txt
 " Maintainer:	Matþew T. Scarbrough <matthewtatescarbrough@tutanota.com>
-" Last Change:	2020 July 09
-" Version:	0.05b
+" Last Change:	2020 August 08
+" Version:	0.05c
 " Note:		Though this file is written from scratch, many lines may
 " 		be takenfrom the $VIMRUNTIME/syntax/markdown.vim file.
 
@@ -158,11 +158,13 @@ syn match mmdValid '&\%(#\=\w*;\)\@!'
 	syn match mmdFormatMetaData ".\+$"  contained contains=mmdFormatComment
 
 	" Code
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^    \|^\t"       matchgroup=mmdFaceDelimiter    end="\s*$"        keepend oneline contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^        \|^\t\t" matchgroup=mmdFaceDelimiter    end="\s*$"        keepend oneline contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                matchgroup=mmdFaceDelimiter    end="`"           keepend oneline contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="\n\+^```\s*$"        skip="`" matchgroup=mmdFaceDelimiter    end="^```\s*$\+\n"        keepend contains=@mmdFaceFormattingCode
-	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\~\~\~\~"                    matchgroup=mmdFaceDelimiter    end="^\~\~\~\~"           keepend contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^$\n    "        matchgroup=mmdFaceDelimiter    end="\n$"        keepend contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^$\n        "    matchgroup=mmdFaceDelimiter    end="\n$"        keepend contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^$\n\t"          matchgroup=mmdFaceDelimiter    end="\n$"        keepend contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^$\n\t\t"        matchgroup=mmdFaceDelimiter    end="\n$"        keepend contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="`"                            matchgroup=mmdFaceDelimiter    end="`"               keepend oneline contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="\n\+^```\s*$"        skip="`" matchgroup=mmdFaceDelimiter    end="^```\s*$\+\n"    keepend contains=@mmdFaceFormattingCode
+	syn region mmdFormatCode          matchgroup=mmdFaceDelimiter start="^\~\~\~\~"                    matchgroup=mmdFaceDelimiter    end="^\~\~\~\~"       keepend contains=@mmdFaceFormattingCode
 
 	" Font Faces
 
