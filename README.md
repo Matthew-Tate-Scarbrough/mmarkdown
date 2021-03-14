@@ -6,7 +6,7 @@ M-Markdown
 
 M-Markdown is a modern markup language, based upon the popular, intuitive, Markdown.
 From note-taking to screenplays and novels, it specifically targets writers, who simply want a plain-text, easy-to-read, elegant markup language for all of their projects.
-It aims to be a general purpose markup language, chiefly with the intention of being compiled directly into portable document formats, such as Adobe's *PDF* or AT&T's *DjVu*.
+It aims to be a general purpose markup language, chiefly with the intention of being compiled directly into portable document formats, such as Adobe's *PDF*.
 To this end, where Markdown depends on CSS for complex styling, M-Markdown seeks to be able to allow the user to style things directly.
 
 
@@ -14,6 +14,14 @@ What's New?
 -----------
 
 Now at `v.0.05` the syntax file has basic support for Pandoc Markdown quirks
+
+
+What's Next?
+------------
+
+The current syntax highlighting package for Vim is rather contrinved.
+The next goal is to completely rewrite it.
+The planned structure will work in blocks rather than everything jumbled together.
 
 
 Goal
@@ -32,8 +40,8 @@ Ideally in Rust and/or C/C++.
 Something quick, lightweight, and extensible.
 
 
-What's Different?
------------------
+What Will be the Difference?
+----------------------------
 
 The only things worth noting are modifications to heading syntax, as well as underline support, and distinction between lead and body paragraphs, which would be handled in a compiler[^1].
 
